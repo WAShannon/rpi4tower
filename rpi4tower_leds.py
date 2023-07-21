@@ -1,9 +1,10 @@
 import board
 import neopixel
 import time
+import random
 
 # LED strip configuration
-LED_COUNT = 4           # Number of LED pixels
+LED_COUNT = 5           # Number of LED pixels
 LED_PIN = board.D18     # GPIO pin connected to the LED strip (GPIO18)
 LED_BRIGHTNESS = 0.2    # Brightness (0.0 to 1.0)
 LED_ORDER = neopixel.GRB  # Strip color order (GRB for WS2812B)
@@ -25,16 +26,26 @@ def turn_off_leds():
 if __name__ == "__main__":
     try:
         # Set individual LED colors
-        set_led_color(0, 255, 0, 0)  # Red
-        set_led_color(1, 0, 255, 0)  # Green
-        set_led_color(2, 0, 0, 255)  # Blue
-        set_led_color(3, 255, 255, 0)  # Yellow
-
-        # Wait for a few seconds
-        time.sleep(5)
+        set_led_color(0, 255, 0, 255) # Purple
+        time.sleep(2)
+        set_led_color(1, 255, 0, 0)  # Red
+        time.sleep(2)
+        set_led_color(2, 0, 255, 0)  # Green
+        time.sleep(2)
+        set_led_color(3, 0, 0, 255)  # Blue
+        time.sleep(2)
 
         # Turn off all LEDs
-        turn_off_leds()
+        #turn_off_leds()
+
+        while True:
+            for i in range(1,4):
+                        r = random.randint(0,255)
+                        g = random.randint(0,255)
+                        b = random.randint(0,255)
+                        set_led_color(i, r, g, b)
+                        time.sleep(1)
+
 
     except KeyboardInterrupt:
         # Turn off LEDs and handle keyboard interrupt
