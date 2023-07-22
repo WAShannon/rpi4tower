@@ -46,10 +46,42 @@ def get_disk_usage():
                 pass
     return None
 
+def display_clock():
+    # while True:
+        # Get current time in 12-hour format without AM/PM
+        current_time = time.strftime("%I:%M")
+
+        # Create blank image
+        image = Image.new("1", (oled.width, oled.height))
+
+        # Calculate the size of the text and center it horizontally
+        draw = ImageDraw.Draw(image)
+        text_width, text_height = draw.textsize(current_time, font=font)
+        x = (WIDTH - text_width) // 2
+        y = (HEIGHT - text_height) // 2
+
+        # Draw the time on the image
+        draw.text((x, y), current_time, font=font, fill="white")
+
+        # Display the image on the OLED
+        oled.image(image)
+        oled.show()
+        time.sleep(5)
+
+
+
 # OLED display setup
 reset_pin = digitalio.DigitalInOut(board.D4)
+# OLED display setup
+WIDTH = 128
+HEIGHT = 64
+I2C_ADDR = 0x3C
 i2c = board.I2C()
-oled = adafruit_ssd1306.SSD1306_I2C(128, 64, i2c, addr=0x3C, reset=reset_pin)
+oled = adafruit_ssd1306.SSD1306_I2C(WIDTH, HEIGHT, i2c, addr=I2C_ADDR)
+
+# Font size and style setup
+FONT_SIZE = 64
+font = ImageFont.truetype("7.ttf", FONT_SIZE)
 
 # Clear the display once at the beginning
 oled.fill(0)
@@ -101,5 +133,9 @@ try:
         # Update every 5 seconds
         time.sleep(5)
 
+        display_clock()
+
 except KeyboardInterrupt:
-    pass
+    oled.fill(0)
+    oled.show()
+    #pass

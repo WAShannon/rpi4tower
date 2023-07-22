@@ -1,0 +1,17 @@
+[Unit]
+Description=RPI4 Tower temperature reactive ambient, and simple fan animation for LEDs.
+DefaultDependencies=no
+StartLimitIntervalSec=60
+StartLimitBurst=5
+
+[Service]
+RootDirectory=/
+User=root
+Type=simple
+ExecStart=/usr/bin/sudo python3 /home/pi/git/rpi4tower/rpi4tower_leds.py
+RemainAfterExit=yes
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target

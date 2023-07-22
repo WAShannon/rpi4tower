@@ -1,0 +1,13 @@
+[Unit]
+Description=RPI4 Tower OLED Screen driver.
+
+[Service]
+Type=forking
+User=root
+RootDirectory=/
+ExecStart=/bin/bash -c 'python3 /home/pi/git/rpi4tower/rpi4tower_oled.py &'
+Restart=always
+RestartSec=30
+
+[Install]
+WantedBy=multi-user.target
