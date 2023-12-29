@@ -4,6 +4,11 @@ import time
 import random
 import subprocess
 
+import logging
+import logging.handlers
+import sys
+import syslog
+
 # LED strip configuration
 LED_COUNT = 5           # Number of LED pixels
 LED_PIN = board.D18     # GPIO pin connected to the LED strip (GPIO18)
@@ -67,3 +72,5 @@ if __name__ == "__main__":
     except KeyboardInterrupt:
         # Turn off LEDs and handle keyboard interrupt
         turn_off_leds()
+    except:
+        syslog.syslog("sdfgsdfgs")

@@ -56,7 +56,7 @@ def display_clock():
 
         # Calculate the size of the text and center it horizontally
         draw = ImageDraw.Draw(image)
-        text_width, text_height = draw.textsize(current_time, font=font)
+        text_left, text_top, text_width, text_height = draw.textbbox((0,0),current_time, font=font)
         x = (WIDTH - text_width) // 2
         y = (HEIGHT - text_height) // 2
 
@@ -81,7 +81,7 @@ oled = adafruit_ssd1306.SSD1306_I2C(WIDTH, HEIGHT, i2c, addr=I2C_ADDR)
 
 # Font size and style setup
 FONT_SIZE = 64
-font = ImageFont.truetype("7.ttf", FONT_SIZE)
+font = ImageFont.truetype("/home/pi/git/rpi4tower/7.ttf", FONT_SIZE)
 
 # Clear the display once at the beginning
 oled.fill(0)
@@ -121,11 +121,10 @@ try:
 
         # Get and display the network IP at the bottom with a larger font
         ip_address = get_ip_address()
-        ip_text_size = draw.textsize(ip_address, font=font_bold_14)
-        ip_x = (oled.width - ip_text_size[0]) // 2
-        ip_y = oled.height - ip_text_size[1] - 1
+        ip_text_size = draw.textbbox((0,0),ip_address, font=font_bold_14)
+        ip_x = (oled.width - ip_text_size[2]) // 2
+        ip_y = oled.height - ip_text_size[3] - 1
         draw.text((ip_x, ip_y), ip_address, font=font_bold_14, fill=1)  # 1 for white color
-
         # Display the image on the OLED
         oled.image(image)
         oled.show()
