@@ -1,6 +1,14 @@
-sudo apt -y install python3 python3-pip python3-pil libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7 python3-psutil
+sudo raspi-config --> Interfaces --> Enable I2C
+git clone https://github.com/WAShannon/rpi4tower.git
 
-sudo usermod -a -G gpio,i2c <user>
+nano rpi4tower/rpi4tower_oled.py --> Font path /home/<user>.....
 
-sudo apt -y install python3 python3-pip python3-pil libjpeg-dev zlib1g-dev libfreetype6-dev liblcms2-dev libopenjp2-7 libtiff5-dev
+sudo pip3 install --break-system-packages adafruit-blinka
+sudo pip3 install --break-system-packages adafruit-circuitpython-ssd1306
+sudo pip3 install --break-system-packages netifaces
+sudo pip3 install --break-system-packages adafruit-circuitpython-neopixel
+
+
+
+
 
