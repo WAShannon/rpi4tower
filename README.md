@@ -1,4 +1,4 @@
-OLED and Moodlighting for GeekPi absminitower case for raspberry pi 4.
+# OLED and Moodlighting for GeekPi absminitower case for raspberry pi 4.
 
 The instructions from geekpi did not work for me, so I've re-created it as simple as I can make it.
 
@@ -6,7 +6,7 @@ The instructions from geekpi did not work for me, so I've re-created it as simpl
 -LED ambient light according to CPU temperature.
 -Fan LEDs just a basic random color rotation.
 
-Install steps(starting in users home folder):
+## Install steps(starting in users home folder):
 sudo raspi-config --> Interfaces --> Enable I2C
 git clone https://github.com/WAShannon/rpi4tower.git
 
