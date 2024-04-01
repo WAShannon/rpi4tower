@@ -81,7 +81,7 @@ oled = adafruit_ssd1306.SSD1306_I2C(WIDTH, HEIGHT, i2c, addr=I2C_ADDR)
 
 # Font size and style setup
 FONT_SIZE = 64
-font = ImageFont.truetype("/home/pi/git/rpi4tower/7.ttf", FONT_SIZE)
+font = ImageFont.truetype("/home/<user>/rpi4tower/7.ttf", FONT_SIZE)
 
 # Clear the display once at the beginning
 oled.fill(0)
