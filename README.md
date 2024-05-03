@@ -10,6 +10,7 @@ Features:
 
 ## Install steps(starting in users home folder):
 sudo raspi-config --> Interfaces --> Enable I2C
+
 git clone https://github.com/WAShannon/rpi4tower.git
 
 nano rpi4tower/rpi4tower_oled.py --> Line 84, font path, change <user> as required.  
